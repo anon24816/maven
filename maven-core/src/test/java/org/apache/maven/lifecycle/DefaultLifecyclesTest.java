@@ -62,7 +62,7 @@ public class DefaultLifecyclesTest
         assertNotNull( cycles );
         final Lifecycle lifecycle = cycles.get( 0 );
         assertEquals( "default", lifecycle.getId() );
-        assertEquals( 23, lifecycle.getPhases().size() );
+        assertEquals( 23, lifecycle.getAllPhases().size() );
 
     }
 
