@@ -19,9 +19,12 @@ package org.apache.maven.rtinfo.internal;
  * under the License.
  */
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.Validate;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 import org.apache.maven.rtinfo.RuntimeInformation;
+import org.apache.maven.utils.Precondition;
 import org.codehaus.plexus.logging.Logger;
 import org.eclipse.aether.util.version.GenericVersionScheme;
 import org.eclipse.aether.version.InvalidVersionSpecificationException;
@@ -29,13 +32,11 @@ import org.eclipse.aether.version.Version;
 import org.eclipse.aether.version.VersionConstraint;
 import org.eclipse.aether.version.VersionScheme;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
+
+import static org.apache.maven.utils.Precondition.isNotEmpty;
 
 /**
  * Provides information about the current Maven runtime.
@@ -68,7 +69,7 @@ public class DefaultRuntimeInformation
                 else
                 {
                     logger.warn(
-                        "Could not locate " + resource + " on classpath, Maven runtime information not available" );
+                            "Could not locate " + resource + " on classpath, Maven runtime information not available" );
                 }
             }
             catch ( IOException e )
@@ -103,7 +104,7 @@ public class DefaultRuntimeInformation
     {
         VersionScheme versionScheme = new GenericVersionScheme();
 
-        Validate.notBlank( versionRange, "versionRange can neither be null, empty nor blank" );
+        Precondition.notBlank( versionRange, "versionRange can neither be null, empty nor blank" );
 
         VersionConstraint constraint;
         try
@@ -119,7 +120,7 @@ public class DefaultRuntimeInformation
         try
         {
             String mavenVersion = getMavenVersion();
-            Validate.validState( StringUtils.isNotEmpty( mavenVersion ), "Could not determine current Maven version" );
+            Precondition.isTrue( isNotEmpty( mavenVersion ), "Could not determine current Maven version" );
 
             current = versionScheme.parseVersion( mavenVersion );
         }

@@ -26,29 +26,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
-
 import org.apache.maven.artifact.InvalidRepositoryException;
 import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.bridge.MavenRepositorySystem;
 import org.apache.maven.repository.RepositorySystem;
-//
-// All of this needs to go away and be couched in terms of the execution request
-//
 import org.apache.maven.settings.Mirror;
 import org.apache.maven.settings.Proxy;
 import org.apache.maven.settings.Repository;
 import org.apache.maven.settings.Server;
 import org.apache.maven.settings.Settings;
 import org.apache.maven.settings.SettingsUtils;
-//
-// Settings in core
-//
+import org.apache.maven.shared.utils.StringUtils;
 import org.apache.maven.toolchain.model.PersistedToolchains;
 import org.apache.maven.toolchain.model.ToolchainModel;
-import org.codehaus.plexus.util.StringUtils;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+
+//
+// All of this needs to go away and be couched in terms of the execution request
+//
 
 /**
  * Assists in populating an execution request for invocation of Maven.

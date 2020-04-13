@@ -29,7 +29,6 @@ import java.util.Objects;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
-
 import org.apache.maven.model.InputSource;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;

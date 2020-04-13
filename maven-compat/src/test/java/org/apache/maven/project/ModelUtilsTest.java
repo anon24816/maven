@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 
 import junit.framework.TestCase;
-
 import org.apache.maven.model.Build;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
